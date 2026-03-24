@@ -41,7 +41,7 @@ namespace XperienceCommunity.PageEditButton.ViewComponents
                 authenticateResult.Principal?.Identity != null &&
                 authenticateResult.Principal.Identity.IsAuthenticated)
             {
-                var pageUrl = $"webpages-{data.WebPage.WebsiteChannelID}/{data.WebPage.LanguageName}_{data.WebPage.WebPageItemID}";
+                var pageUrl = $"/webpages-{data.WebPage.WebsiteChannelID}/{data.WebPage.LanguageName}_{data.WebPage.WebPageItemID}";
 
                 var model = BuildAdminUrl(pageUrl);
                 return View(model: model);
