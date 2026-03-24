@@ -20,6 +20,8 @@ With this package, you can add a similar button to your Xperience by Kentico web
 | Xperience Version | Library Version |
 | ----------------- | --------------- |
 | >= 29.1.4         | 1.0.0+          |
+| ----------------- | --------------- |
+| >= 31.3.0         | 2.0.0+          |
 
 ## Dependencies
 

@@ -1,28 +1,24 @@
 ﻿using Kentico.Content.Web.Mvc;
 using Kentico.Membership;
 using Kentico.Web.Mvc;
-using Kentico.Xperience.Admin.Base;
-using Kentico.Xperience.Admin.Websites.UIPages;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using XperienceCommunity.PageEditButton.Options;
 
+
 namespace XperienceCommunity.PageEditButton.ViewComponents
 {
     public class PageEditButtonViewComponent : ViewComponent
     {
-        private readonly IPageUrlGenerator _pageUrlGenerator;
         private readonly IWebPageDataContextRetriever _webPageDataContextRetriever;
         private readonly PageEditButtonOptions _options;
 
         public PageEditButtonViewComponent(
-            IPageUrlGenerator pageUrlGenerator,
             IWebPageDataContextRetriever webPageDataContextRetriever,
             IOptions<PageEditButtonOptions> options)
         {
-            _pageUrlGenerator = pageUrlGenerator;
             _webPageDataContextRetriever = webPageDataContextRetriever;
             _options = options.Value;
         }
@@ -45,7 +41,7 @@ namespace XperienceCommunity.PageEditButton.ViewComponents
                 authenticateResult.Principal?.Identity != null &&
                 authenticateResult.Principal.Identity.IsAuthenticated)
             {
-                var pageUrl = _pageUrlGenerator.GenerateUrl<PageBuilderTab>($"webpages-{data.WebPage.WebsiteChannelID}", $"{data.WebPage.LanguageName}_{data.WebPage.WebPageItemID}");
+                var pageUrl = $"webpages-{data.WebPage.WebsiteChannelID}/{data.WebPage.LanguageName}_{data.WebPage.WebPageItemID}";
 
                 var model = BuildAdminUrl(pageUrl);
                 return View(model: model);
